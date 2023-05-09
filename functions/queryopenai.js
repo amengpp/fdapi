@@ -32,6 +32,8 @@ exports.handler = async (event) => {
   //   headers: res.headers,
   // });
   console.log(res)
+  const data = await res.json();
+  console.log(data)
   return {
     statusCode: 200,
     // body: JSON.stringify({ result: data.choices[0].text || {} }),
