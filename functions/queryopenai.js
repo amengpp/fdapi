@@ -51,11 +51,12 @@ const CORS_HEADERS: Record<string, string> = {
 // }
 exports.handler = async (event) => {
   console.log(event)
-  if (event.httpMethod === "OPTIONS") {
-    return new Response(null, {
-      headers: CORS_HEADERS,
-    });
-  }
+  // if (event.httpMethod === "OPTIONS") {
+  //   return new Response(null, {
+  //     headers: CORS_HEADERS,
+  //   });
+  // }
+  console.log(event.httpMethod)
   return {
     statusCode: 200,
     body: "test ok"
