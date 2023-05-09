@@ -6,7 +6,7 @@
   directory = "functions"
 
 [[redirects]]
-  from = "/"
+  from = "/*"
   to = "/.netlify/functions/queryopenai/"
   status = 200
   force = true
