@@ -41,21 +41,7 @@ const fetch = require('isomorphic-fetch');
 //     headers: res.headers,
 //   });
 // }
-exports.handler = async (event) => {
-  console.log(event)
-  const response = await fetch(
-    'https://api.openai.com/v1/completions',
-    requestOptions
-  );
 
-  const data = await response.json();
-  console.log('🚀 file: queryopenai.js:41 ~ exports.handler= ~ data:', data);
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ result: data.choices[0].text || {} }),
-  };
-}
 exports.handler = async (event) => {
   const { newMessage, messageHistory } = JSON.parse(event.body);
 
