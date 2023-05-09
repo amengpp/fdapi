@@ -18,90 +18,90 @@ const fetch = require('isomorphic-fetch');
 //   "access-control-allow-headers": "Content-Type, Authorization",
 // };
 
-exports.handler = async (event) => {
-  console.log(event)
-  // if (event.httpMethod === "OPTIONS") {
-  //   return new Response(null, {
-  //     headers: CORS_HEADERS,
-  //   });
-  // }
-  // console.log(event.httpMethod)
-
-  //
-  // const url = new URL(event.path +"?"+event.rawQuery, "https://api.openai.com").href;
-  // console.log(url)
-  // const headers = pickHeaders(event.headers, ["content-type", "authorization"]);
-
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
-    body: event.body,
-    method: event.httpMethod,
-    event.headers,
-  });
-  return new Response(res.body, {
-    headers: res.headers,
-  });
-}
 // exports.handler = async (event) => {
 //   console.log(event)
-//   const response = await fetch(
-//     'https://api.openai.com/v1/completions',
-//     requestOptions
-//   );
+//   // if (event.httpMethod === "OPTIONS") {
+//   //   return new Response(null, {
+//   //     headers: CORS_HEADERS,
+//   //   });
+//   // }
+//   // console.log(event.httpMethod)
 //
-//   const data = await response.json();
-//   console.log('🚀 file: queryopenai.js:41 ~ exports.handler= ~ data:', data);
+//   //
+//   // const url = new URL(event.path +"?"+event.rawQuery, "https://api.openai.com").href;
+//   // console.log(url)
+//   // const headers = pickHeaders(event.headers, ["content-type", "authorization"]);
 //
-//   return {
-//     statusCode: 200,
-//     body: JSON.stringify({ result: data.choices[0].text || {} }),
-//   };
+//   const res = await fetch("https://api.openai.com/v1/chat/completions", {
+//     body: event.body,
+//     method: event.httpMethod,
+//     event.headers,
+//   });
+//   return new Response(res.body, {
+//     headers: res.headers,
+//   });
 // }
-// exports.handler = async (event) => {
-//   const { newMessage, messageHistory } = JSON.parse(event.body);
-//
-//   const intro =
-//     'The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.';
-//   const prompt = messageHistory
-//     .map((message) => {
-//       return message.sender === 'me'
-//         ? `Human: ${message.text}`
-//         : `AI: ${message.text}`;
-//     })
-//     .join('\n');
-//
-//   const query = intro + '\n' + prompt + '\nHuman: ' + newMessage + '\nAI:';
-//
-//   const DEFAULT_PARAMS = {
-//     model: 'text-davinci-002',
-//     temperature: 0.7,
-//     max_tokens: 256,
-//     top_p: 1,
-//     frequency_penalty: 0,
-//     presence_penalty: 0,
-//   };
-//   const params_ = { ...DEFAULT_PARAMS, prompt: query };
-//   const requestOptions = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Authorization: 'Bearer ' + process.env.REACT_APP_OPEN_AI_API_KEY,
-//     },
-//     body: JSON.stringify(params_),
-//   };
-//
-//   const response = await fetch(
-//     'https://api.openai.com/v1/completions',
-//     requestOptions
-//   );
-//   console.log(
-//     '🚀 ~ file: queryopenai.js:40 ~ exports.handler= ~ response:',
-//     response
-//   );
-//   const data = await response.json();
-//   console.log('🚀 file: queryopenai.js:41 ~ exports.handler= ~ data:', data);
-//
-//   return {
-//     statusCode: 200,
-//     body: JSON.stringify({ result: data.choices[0].text || {} }),
-//   };
-// };
+exports.handler = async (event) => {
+  console.log(event)
+  const response = await fetch(
+    'https://api.openai.com/v1/completions',
+    requestOptions
+  );
+
+  const data = await response.json();
+  console.log('🚀 file: queryopenai.js:41 ~ exports.handler= ~ data:', data);
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ result: data.choices[0].text || {} }),
+  };
+}
+exports.handler = async (event) => {
+  const { newMessage, messageHistory } = JSON.parse(event.body);
+
+  const intro =
+    'The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.';
+  const prompt = messageHistory
+    .map((message) => {
+      return message.sender === 'me'
+        ? `Human: ${message.text}`
+        : `AI: ${message.text}`;
+    })
+    .join('\n');
+
+  const query = intro + '\n' + prompt + '\nHuman: ' + newMessage + '\nAI:';
+
+  const DEFAULT_PARAMS = {
+    model: 'text-davinci-002',
+    temperature: 0.7,
+    max_tokens: 256,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+  };
+  const params_ = { ...DEFAULT_PARAMS, prompt: query };
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + process.env.REACT_APP_OPEN_AI_API_KEY,
+    },
+    body: JSON.stringify(params_),
+  };
+
+  const response = await fetch(
+    'https://api.openai.com/v1/completions',
+    requestOptions
+  );
+  console.log(
+    '🚀 ~ file: queryopenai.js:40 ~ exports.handler= ~ response:',
+    response
+  );
+  const data = await response.json();
+  console.log('🚀 file: queryopenai.js:41 ~ exports.handler= ~ data:', data);
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ result: data.choices[0].text || {} }),
+  };
+};
