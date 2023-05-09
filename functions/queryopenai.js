@@ -1,4 +1,5 @@
 const fetch = require('isomorphic-fetch');
+
 const pickHeaders = (headers: Headers, keys: (string | RegExp)[]): Headers => {
   const picked = new Headers();
   for (const key of headers.keys()) {
@@ -55,27 +56,31 @@ exports.handler = async (event) => {
       headers: CORS_HEADERS,
     });
   }
-
-  const url = new URL(event.path +"?"+event.rawQuery, "https://api.openai.com").href;
-  console.log(url)
-  const headers = pickHeaders(event.headers, ["content-type", "authorization"]);
-
-  const res = await fetch(url, {
-    body: event.body,
-    method: event.httpMethod,
-    headers,
-  });
-
-  const resHeaders = {
-    ...CORS_HEADERS,
-    ...Object.fromEntries(
-        pickHeaders(res.headers, ["content-type", /^x-ratelimit-/, /^openai-/])
-    ),
+  return {
+    statusCode: 200,
+    body: "test ok"
   };
-
-  return new Response(res.body, {
-    headers: resHeaders,
-  });
+  //
+  // const url = new URL(event.path +"?"+event.rawQuery, "https://api.openai.com").href;
+  // console.log(url)
+  // const headers = pickHeaders(event.headers, ["content-type", "authorization"]);
+  //
+  // const res = await fetch(url, {
+  //   body: event.body,
+  //   method: event.httpMethod,
+  //   headers,
+  // });
+  //
+  // const resHeaders = {
+  //   ...CORS_HEADERS,
+  //   ...Object.fromEntries(
+  //       pickHeaders(res.headers, ["content-type", /^x-ratelimit-/, /^openai-/])
+  //   ),
+  // };
+  //
+  // return new Response(res.body, {
+  //   headers: resHeaders,
+  // });
 }
 // exports.handler = async (event) => {
 //   const { newMessage, messageHistory } = JSON.parse(event.body);
