@@ -19,6 +19,7 @@ const CORS_HEADERS: Record<string, string> = {
 };
 
 exports.handler = async (req) =>  {
+  console.log(req)
   if (req.method === "OPTIONS") {
     return new Response(null, {
       headers: CORS_HEADERS,

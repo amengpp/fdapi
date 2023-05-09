@@ -7,6 +7,6 @@
 
 [[redirects]]
   from = "/"
-  to = "https://api.openai.com/"
+  to = "/.netlify/functions/queryopenai/"
   status = 200
   force = true
