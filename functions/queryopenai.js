@@ -56,7 +56,7 @@ exports.handler = async (event) => {
   //     headers: CORS_HEADERS,
   //   });
   // }
-  console.log(event.httpMethod)
+  // console.log(event.httpMethod)
   return {
     statusCode: 200,
     body: "test ok"
