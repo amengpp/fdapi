@@ -1,5 +1,4 @@
 const fetch = require('isomorphic-fetch');
-
 const pickHeaders = (headers: Headers, keys: (string | RegExp)[]): Headers => {
   const picked = new Headers();
   for (const key of headers.keys()) {
@@ -18,7 +17,6 @@ const CORS_HEADERS: Record<string, string> = {
   "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
   "access-control-allow-headers": "Content-Type, Authorization",
 };
-
 
 // exports.handler = async (req) =>  {
 //   console.log(req)
@@ -51,37 +49,10 @@ const CORS_HEADERS: Record<string, string> = {
 // }
 exports.handler = async (event) => {
   console.log(event)
-  // if (event.httpMethod === "OPTIONS") {
-  //   return new Response(null, {
-  //     headers: CORS_HEADERS,
-  //   });
-  // }
-  // console.log(event.httpMethod)
   return {
     statusCode: 200,
     body: "test ok",
   };
-  //
-  // const url = new URL(event.path +"?"+event.rawQuery, "https://api.openai.com").href;
-  // console.log(url)
-  // const headers = pickHeaders(event.headers, ["content-type", "authorization"]);
-  //
-  // const res = await fetch(url, {
-  //   body: event.body,
-  //   method: event.httpMethod,
-  //   headers,
-  // });
-  //
-  // const resHeaders = {
-  //   ...CORS_HEADERS,
-  //   ...Object.fromEntries(
-  //       pickHeaders(res.headers, ["content-type", /^x-ratelimit-/, /^openai-/])
-  //   ),
-  // };
-  //
-  // return new Response(res.body, {
-  //   headers: resHeaders,
-  // });
 }
 // exports.handler = async (event) => {
 //   const { newMessage, messageHistory } = JSON.parse(event.body);
