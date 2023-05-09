@@ -59,7 +59,7 @@ exports.handler = async (event) => {
   // console.log(event.httpMethod)
   return {
     statusCode: 200,
-    body: "test ok"
+    body: "test ok",
   };
   //
   // const url = new URL(event.path +"?"+event.rawQuery, "https://api.openai.com").href;
