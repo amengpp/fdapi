@@ -18,6 +18,7 @@ const CORS_HEADERS: Record<string, string> = {
   "access-control-allow-headers": "Content-Type, Authorization",
 };
 
+
 // exports.handler = async (req) =>  {
 //   console.log(req)
 //   if (req.method === "OPTIONS") {
