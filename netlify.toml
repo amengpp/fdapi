@@ -6,7 +6,7 @@
   directory = "functions"
 
 [[redirects]]
-  from = "/*"
-  to = "https://api.openai.com:splat"
+  from = "/"
+  to = "https://api.openai.com"
   status = 200
   force = true
