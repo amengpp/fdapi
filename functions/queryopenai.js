@@ -1,22 +1,22 @@
 const fetch = require('isomorphic-fetch');
-const pickHeaders = (headers: Headers, keys: (string | RegExp)[]): Headers => {
-  const picked = new Headers();
-  for (const key of headers.keys()) {
-    if (keys.some((k) => (typeof k === "string" ? k === key : k.test(key)))) {
-      const value = headers.get(key);
-      if (typeof value === "string") {
-        picked.set(key, value);
-      }
-    }
-  }
-  return picked;
-};
-
-const CORS_HEADERS: Record<string, string> = {
-  "access-control-allow-origin": "*",
-  "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "access-control-allow-headers": "Content-Type, Authorization",
-};
+// const pickHeaders = (headers: Headers, keys: (string | RegExp)[]): Headers => {
+//   const picked = new Headers();
+//   for (const key of headers.keys()) {
+//     if (keys.some((k) => (typeof k === "string" ? k === key : k.test(key)))) {
+//       const value = headers.get(key);
+//       if (typeof value === "string") {
+//         picked.set(key, value);
+//       }
+//     }
+//   }
+//   return picked;
+// };
+//
+// const CORS_HEADERS: Record<string, string> = {
+//   "access-control-allow-origin": "*",
+//   "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+//   "access-control-allow-headers": "Content-Type, Authorization",
+// };
 
 // exports.handler = async (req) =>  {
 //   console.log(req)
