@@ -22,8 +22,8 @@ exports.handler = async (event) => {
   console.log(event)
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     body: event.body,
-    method: event.httpMethod,
-    event.headers,
+    method: 'POST',
+    headers:event.headers,
   });
   // return new Response(res.body, {
   //   headers: res.headers,
@@ -70,7 +70,7 @@ exports.handler = async (event) => {
 //   };
 //
 //   const response = await fetch(
-//     'https://api.openai.com/v1/completions',
+//     'https://api.openai.com/v1/chat/completions',
 //     requestOptions
 //   );
 //   console.log(
