@@ -20,7 +20,10 @@ const fetch = require('isomorphic-fetch');
 
 exports.handler = async (event) => {
   console.log(event)
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+  let url = "https://api.openai.com"+event.path;
+  console.log(url)
+  // const res = await fetch("https://api.openai.com/v1/chat/completions", {
+  const res = await fetch(url, {
     body: event.body,
     method: event.httpMethod,
     headers: {
