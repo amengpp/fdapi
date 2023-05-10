@@ -22,22 +22,18 @@ exports.handler = async (event) => {
   console.log(event)
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     body: event.body,
-    method: 'POST',
+    method: event.httpMethod,
     headers: {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + process.env.REACT_APP_OPEN_AI_API_KEY,
     },
   });
-  // return new Response(res.body, {
-  //   headers: res.headers,
-  // });
   console.log(res)
   const data = await res.json();
   console.log(data)
   return {
     statusCode: 200,
     body: JSON.stringify(data),
-    // body: "test okkkk",
   };
 }
 
