@@ -24,7 +24,8 @@ exports.handler = async (event) => {
   console.log(url)
   // const res = await fetch("https://api.openai.com/v1/chat/completions", {
   const res = await fetch(url, {
-    body: event.body,
+    // body: event.body,
+    body: event.body ? event.body : undefined,
     method: event.httpMethod,
     headers: {
       'Content-Type': 'application/json',
