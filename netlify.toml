@@ -6,7 +6,7 @@
   directory = "functions"
 
 [[redirects]]
-  from = "/v1/chat/completions"
+  from = "/*"
   to = "/.netlify/functions/queryopenai/"
   status = 200
   force = true
