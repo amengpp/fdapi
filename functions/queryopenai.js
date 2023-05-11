@@ -21,7 +21,7 @@ const fetch = require('isomorphic-fetch');
 exports.handler = async (event) => {
   console.log(event)
   let url = "https://api.openai.com"+event.path;
-  console.log(url)
+  // console.log(url)
   // const res = await fetch("https://api.openai.com/v1/chat/completions", {
   const res = await fetch(url, {
     // body: event.body,
@@ -32,7 +32,7 @@ exports.handler = async (event) => {
       Authorization: 'Bearer ' + process.env.REACT_APP_OPEN_AI_API_KEY,
     },
   });
-  console.log(res)
+  // console.log(res)
   const data = await res.json();
   console.log(data)
   return {
